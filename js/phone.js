@@ -1,24 +1,26 @@
-const loadPhone=async (searchText)=>{
+const loadPhone=async (searchText,isShowAll)=>{
     const res=await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data=await res.json();
     phones=data.data;
     console.log(data)
-    displayPhones(phones)
+    displayPhones(phones,isShowAll)
 }
 
 
-const displayPhones=phones=>{
+const displayPhones=(phones,isShowAll)=>{
     // console.log(phones);
     const phoneContainer=document.getElementById('phone-container');
     phoneContainer.textContent='';
     const showAll=document.getElementById('show-all');
-    if(phones.length > 9){
+    if(phones.length > 9 && !isShowAll ){
         showAll.classList.remove('hidden');
     }
     else{
         showAll.classList.add('hidden');
     }
-    phones=phones.slice(0,9)
+    if(!isShowAll){
+        phones=phones.slice(0,9)
+    }
     phones.forEach(phone => {
         console.log(phone);
 
@@ -26,11 +28,11 @@ const displayPhones=phones=>{
         phoneCard.classList=`card p-4 bg-gray-100 shadow-xl `;
         phoneCard.innerHTML=`
         <figure><img src="${phone.image}" alt="Shoes" /></figure>
-        <div class="card-body">
+        <div class="card-body text-black">
           <h2 class="card-title">${phone.phone_name}</h2>
           <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary">Buy Now</button>
+          <div class="card-actions mt-2 justify-center">
+            <button onclick="showDetails('${phone.slug}')" class="btn btn-primary">SHOW DETAILS</button>
           </div>
         </div>
       </div>
@@ -42,12 +44,18 @@ const displayPhones=phones=>{
 }
 
 
-const handleSearch=()=>{
+const showDetails=(id)=>{
+console.log(id)
+}
+
+
+
+const handleSearch=(isShowAll)=>{
     toggleLoading(true);
     const searchField=document.getElementById('search-field');
     const searchText=searchField.value;
     console.log(searchText)
-    loadPhone(searchText)
+    loadPhone(searchText,isShowAll)
 }
 
 const toggleLoading=(isLoading)=>{
@@ -58,5 +66,9 @@ const toggleLoading=(isLoading)=>{
     else{
         loadingSpinner.classList.add('hidden');
     }
+}
+
+const handleShowAll=()=>{
+   handleSearch(true);
 }
 
