@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Dokan</title>
-    
-    
-<link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.2/dist/full.css" rel="stylesheet" type="text/css" />
-<script src="https://cdn.tailwindcss.com"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mobile Dokan</title>
 
-</head>
-<body>
-    <header>
-    
-    </header>
-    <main>
-        <section class="bg-gray-100 p-4 m4 ">
-            <input id="search-field" type="text" placeholder="Type mobile name " class="input input-bordered w-full max-w-xs" />
-            <button onclick="handleSearch()" class="btn btn-accent">Search</button>
-        </section>
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.2/dist/full.css"
+            rel="stylesheet" type="text/css" />
+        <script src="https://cdn.tailwindcss.com"></script>
 
-<section class="mx-auto mt-8">
+    </head>
+    <body>
+        <header>
 
-<div id="phone-container" class=" gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 "> 
-</div>
-<div id="show-all" class="hidden mt-2">
-    <button  class="btn btn-accent">Show All</button>
-</div>
+        </header>
+        <main>
+            <section class="bg-gray-100 p-4 m4 ">
+                <input id="search-field" type="text"
+                    placeholder="Type mobile name "
+                    class="input input-bordered w-full max-w-xs" />
+                <button onclick="handleSearch()" class="btn btn-accent">Search</button>
+            </section>
 
-</section>
+            <section class="mx-auto mt-8">
+                <div id="loading" class="text-center hidden">
+                    <span class="loading loading-spinner loading-lg"></span>
+                </div>
+                <div id="phone-container"
+                    class=" gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+                </div>
+                <div id="show-all" class="hidden mt-2">
+                    <button class="btn btn-accent">Show All</button>
+                </div>
 
-    </main>
-    <footer></footer>
-    <script src="js/phone.js"></script>
-    <script src="tailwind.config.js"></script>
-</body>
+            </section>
+
+            
+
+        </main>
+        <footer></footer>
+        <script src="js/phone.js"></script>
+        <script src="tailwind.config.js"></script>
+    </body>
 </html>
